@@ -309,3 +309,10 @@ Limin Wang: lmwang.nju@gmail.com
 [bs_line]:https://github.com/yjxiong/temporal-segment-networks/blob/master/models/ucf101/tsn_bn_inception_flow_train_val.prototxt#L8
 [bug]:https://github.com/yjxiong/caffe/commit/c0d200ba0ed004edcfd387163395be7ea309dbc3
 [tsn_site]:http://yjxiong.me/others/tsn/
+
+## Docker
+docker run -v $PWD:/assets -it tsn /bin/bash
+cd /app
+python tools/eval_net.py ucf101 1 rgb /assets/frames \
+ /models/ucf101/tsn_bn_inception_rgb_deploy.prototxt /models/ucf101_split_1_tsn_rgb_reference_bn_inception.caffemodel \
+ --num_worker 4 --save_scores /assets/score
